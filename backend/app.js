@@ -24,7 +24,7 @@ import path from "path"
 app.use(express.static(path.resolve('../frontend/public')))
 
 // routes
-app.use('/api/store', storeRouter)
+app.use('/api', storeRouter)
 
 // catch 404 and forward to error handler
 app.use(error)
