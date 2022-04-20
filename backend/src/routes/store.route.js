@@ -16,6 +16,7 @@ router
 .get('/user/:id/cart/product', function(req, res, next) {
   storeController.getUserCartProducts(req, res, next)
 })
+// user - cart - product
 .post('/user/:id/cart/product', function(req, res, next) {
   storeController.addProductToCart(req, res, next)
 })
