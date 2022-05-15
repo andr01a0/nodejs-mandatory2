@@ -4,10 +4,10 @@ import helmet from 'helmet'
 import cors from 'cors'
 import { fileLogger, consoleLogger } from './src/middlewares/logging.middleware.js'
 import { error, errorHandler } from './src/middlewares/error.handling.middleware.js'
-import storeRouter from './src/routes/store.route.js'
-import { session } from './src/middlewares/session.middleware.js'
-import { checkSignIn } from './src/middlewares/authorization.middleware.js'
 import passport from 'passport'
+import jwtConfig from './src/configs/jwt.config.js'
+import storeRoute from './src/routes/store.route.js'
+import authRoute from './src/routes/authentication.route.js'
 
 const app = express()
 
@@ -15,22 +15,28 @@ const app = express()
 app.use(consoleLogger)
 app.use(fileLogger)
 
+// helmet security
 app.use('/api/', helmet())
-app.use(cors())
 
-// settings for the session
+// pass the global passport object to the jwtConfig
+jwtConfig(passport)
+// passportjs initialization
+app.use(passport.initialize())
+
+// body parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(session)
-app.use(passport.initialize())
-app.use(passport.session())
+
+// setup cors
+app.use(cors())
 
 // serve frontend
 import path from "path"
 app.use(express.static(path.resolve('../frontend/public')))
 
 // backend routes
-app.use('/api', checkSignIn, storeRouter)
+app.use('/api', passport.authenticate('jwt', { session: false }), storeRoute)
+app.use('/', authRoute)
 
 // catch 404 and forward to error handler
 app.use(error)

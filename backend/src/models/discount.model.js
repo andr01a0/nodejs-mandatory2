@@ -20,13 +20,6 @@ const Discount = sequelize.define('Discount', {
   }
 })
 
-Discount.associate = (models) => {
-  Discount.belongsTo(models.Product, {
-    foreignKey: "productId",
-    as: "product",
-  })
-}
-
 await Discount.sync()
 
 export default Discount

@@ -10,14 +10,6 @@ const Cart = sequelize.define('Cart', {
   }
 })
 
-Cart.associate = (models) => {
-  Cart.belongsTo(models.User, {
-    foreignKey: "userId",
-    as: "user",
-  })
-  Cart.hasMany(models.Item, { as: "item" })
-}
-
 await Cart.sync()
 
 export default Cart

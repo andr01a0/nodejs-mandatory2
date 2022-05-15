@@ -21,14 +21,6 @@ const Product = sequelize.define('Product', {
   }
 })
 
-Product.associate = (models) => {
-  Product.belongsToMany(models.Item, {
-    foreignKey: "itemId",
-    as: "item",
-  })
-	Product.hasOne(models.Discount, { as: "discount" })
-}
-
 await Product.sync()
 
 export default Product

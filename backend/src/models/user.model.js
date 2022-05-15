@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../configs/db.config.js'
+import bcrypt from 'bcrypt'
 
 const User = sequelize.define('User', {
   userId: {
@@ -19,8 +20,12 @@ const User = sequelize.define('User', {
   }
 })
 
-User.associate = (models) => {
-  User.hasOne(models.Cart, { as: "cart" })
+User.addHook("beforeCreate", newUser => {
+  newUser.password = bcrypt.hashSync(newUser.password, bcrypt.genSaltSync(10), null)
+})
+
+User.prototype.validatePassword = (pass, hash) => {
+  return bcrypt.compareSync(pass, hash)
 }
 
 await User.sync()

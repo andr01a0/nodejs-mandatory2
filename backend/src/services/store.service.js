@@ -1,64 +1,60 @@
-import userModel from '../models/user.model.js'
-import cartModel from '../models/cart.model.js'
-import itemModel from '../models/item.model.js'
-import productModel from '../models/product.model.js'
-import discountModel from '../models/discount.model.js'
+import { models } from '../configs/db.models.config.js'
 
 export default {
 	getUsers: async (req, res, next) => {
-			return await userModel.findAll()
+			return await models.User.findAll()
 	},
 	createUser: async (req, res, next) => {
-		const user = await userModel.create(req.body)
-		await cartModel.create({
+		const user = await models.User.create(req.body)
+		await models.Cart.create({
 			userId: user.userId
 		})
 		return user
 	},
 	getUserById: async (req, res, next) => {
-		return await userModel.findOne({
+		return await models.User.findOne({
 			where: {
 				userId: req.params.id
 			}
 		})
 	},
 	getUserCartProducts: async (req, res, next) => {
-		const cart = await cartModel.findOne({
+		const cart = await models.Cart.findOne({
 			where: {
 				userId: req.params.cartId
 			}
 		})
-		return await itemModel.findAll({
+		return await models.Item.findAll({
 			where: {
 				cartId: cart.cartId
 			}
 		})
 	},
 	addProductToCart: async (req, res, next) => {
-		const cart = await cartModel.findOne({
+		const cart = await models.Cart.findOne({
 			where: {
 				userId: req.params.cartId
 			}
 		})
-		const product = await productModel.findOne({
+		const product = await models.Product.findOne({
 			where: {
 				productId: req.params.productId
 			}
 		})
-		return item = await itemModel.create({
+		return item = await models.Item.create({
 			cartId: cart.cartId,
 			productId: product.productId,
 			quantity: req.body.quantity
 		})
 	},
 	getProducts: async (req, res, next) => {
-		return await productModel.findAll()
+		return await models.Product.findAll()
 	},
 	createProduct: async (req, res, next) => {
-		return await productModel.create(req.body)
+		return await models.Product.create(req.body)
 	},
 	getProductById: async (req, res, next) => {
-		return await productModel.findOne({
+		return await models.Product.findOne({
 			where: {
 				productId: req.params.productId
 			}
