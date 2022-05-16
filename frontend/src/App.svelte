@@ -1,10 +1,28 @@
 <script>
-	
+	import Header from "./components/header.svelte";
+	import Body from "./components/body.svelte";
+	import Footer from "./components/footer.svelte";
+	import { Col, Container, Row } from 'sveltestrap';
 </script>
 
 <main>
-	<h1>Hello World!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Container>
+		<Row>
+			<Col>
+				<Header />
+			</Col>
+		</Row>
+		<Row>
+			<Col>
+				<Body />
+			</Col>
+		</Row>
+		<Row>
+			<Col>
+				<Footer />
+			</Col>
+		</Row>
+	</Container>
 </main>
 
 <style>
@@ -13,13 +31,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
