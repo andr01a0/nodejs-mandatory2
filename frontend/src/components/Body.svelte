@@ -1,5 +1,5 @@
 <script>
-	import { Icon, Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
+	import { Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
 
 	let isOpen = false;
 </script>
