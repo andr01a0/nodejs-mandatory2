@@ -6,7 +6,7 @@
 
 <main>
 	<h1>Body Component</h1>
-	<Button
+	<Button color="primary"
 		on:click={
 			() => addNotification({
 				text: 'Added to your cart',
