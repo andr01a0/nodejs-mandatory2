@@ -2,9 +2,9 @@
 
 </script>
 
-<div>
+<footer>
 	<span>Footer Component</span>
-</div>
+</footer>
 
 <style>
 
