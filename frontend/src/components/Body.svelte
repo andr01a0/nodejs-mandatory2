@@ -13,8 +13,10 @@
 
 	function hideToast() {
 		isOpen = false;
-		if(timeoutId != null)
+		if(timeoutId != null) {
 			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
 	}
 </script>
 
