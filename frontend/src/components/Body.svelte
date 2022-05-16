@@ -1,22 +1,37 @@
 <script>
-	import { Button } from 'sveltestrap';
-	import { getNotificationsContext } from 'svelte-notifications';
-	const { addNotification } = getNotificationsContext();
+	import { Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
+
+	let isOpen = false;
+	let timeoutId = null;
+
+  function showToast() {
+		if(!isOpen) {
+			isOpen = true;
+			timeoutId = setTimeout(() => {isOpen=false}, 3000);
+		}
+  }
+
+	function hideToast() {
+		isOpen = false;
+		if(timeoutId != null)
+			clearTimeout(timeoutId);
+	}
 </script>
 
 <main>
 	<h1>Body Component</h1>
 	<Button color="primary"
-		on:click={
-			() => addNotification({
-				text: 'Added to your cart',
-				type: 'success',
-				position: 'top-right',
-				removeAfter: 3000,
-			})
-		}>
+		on:click={showToast}>
 		Add to Cart
 	</Button>
+	<div>
+    <Toast class="align-items-center position-absolute top-0 end-0 border-0 p-3" {isOpen}>
+      <ToastHeader icon="success" toggle={hideToast}>Success</ToastHeader>
+      <ToastBody>
+        This is a toast.
+      </ToastBody>
+    </Toast>
+  </div>
 </main>
 
 <style>
