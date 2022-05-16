@@ -1,37 +1,23 @@
 <script>
-	import { Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
+	import { Icon, Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
 
 	let isOpen = false;
-	let timeoutId = null;
-
-  function showToast() {
-		if(!isOpen) {
-			isOpen = true;
-			timeoutId = setTimeout(() => {isOpen=false}, 3000);
-		}
-  }
-
-	function hideToast() {
-		isOpen = false;
-		if(timeoutId != null) {
-			clearTimeout(timeoutId);
-			timeoutId = null;
-		}
-	}
 </script>
 
 <main>
-	<h1>Body Component</h1>
 	<Button color="primary"
-		on:click={showToast}>
+		on:click={() => (isOpen = true)}>
 		Add to Cart
 	</Button>
 	<div>
-    <Toast class="align-items-center position-absolute top-0 end-0 border-0 p-3" {isOpen}>
-      <ToastHeader icon="success" toggle={hideToast}>Success</ToastHeader>
-      <ToastBody>
-        This is a toast.
-      </ToastBody>
+    <Toast autohide delay=3000
+		class="align-items-center position-absolute top-0 end-0 border-0 p-3" 
+		{isOpen}
+		on:close={() => (isOpen = false)}>
+			<ToastHeader icon="success">success</ToastHeader>
+			<ToastBody>
+				Product added to your cart.
+			</ToastBody>
     </Toast>
   </div>
 </main>
