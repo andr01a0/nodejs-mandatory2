@@ -2,3 +2,4 @@
 *.vpp
 *.pem
 ERD.png
+.DS_Store

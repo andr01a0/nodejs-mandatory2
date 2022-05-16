@@ -5,3 +5,4 @@ package-lock.json
 logs
 *.sqlite
 *.pem
+.DS_Store
