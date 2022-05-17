@@ -19,10 +19,10 @@
 </script>
 
 <header>
-	<Navbar color="#D55345" dark expand="md">
+	<Navbar dark expand="md">
 		<NavbarBrand>
 			<Link to="/">
-				<Image alt="KEA Store" src="./images/logo.png" />
+				<Image alt="KEA Store" src="./images/logo.png" height=24 width=118 />
 			</Link>
 		</NavbarBrand>
 		<NavbarToggler on:click={() => (isOpen = !isOpen)} />
@@ -38,3 +38,9 @@
 		</Collapse>
 	</Navbar>
 </header>
+
+<style>
+	header {
+		background: #D55345;
+	}
+</style>

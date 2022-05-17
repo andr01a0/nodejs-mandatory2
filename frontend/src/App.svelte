@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </svelte:head>
 
-<Router>
-	<Container>
+<Router primary={false}>
+	<Container fluid>
 		<Row>
 			<Col>
 				<Header />
