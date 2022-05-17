@@ -1,7 +1,7 @@
 <script>
-	import Header from "./components/header.svelte";
-	import Body from "./components/body.svelte";
-	import Footer from "./components/footer.svelte";
+	import Header from "./components/Header.svelte";
+	import Body from "./components/Body.svelte";
+	import Footer from "./components/Footer.svelte";
 	import { Col, Container, Row } from 'sveltestrap';
 	import { Router } from "svelte-navigator";
 </script>
@@ -30,7 +30,3 @@
 		</Row>
 	</Container>
 </Router>
-
-<style>
-	
-</style>

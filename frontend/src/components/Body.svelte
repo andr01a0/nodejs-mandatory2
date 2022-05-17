@@ -1,25 +1,10 @@
 <script>
-	import { Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
-
-	let isOpen = false;
+	import { Route } from "svelte-navigator";
+	import Products from "./Products.svelte";
 </script>
 
 <main>
-	<Button color="primary"
-		on:click={() => (isOpen = true)}>
-		Add to Cart
-	</Button>
-	<div>
-    <Toast autohide delay=3000
-		class="align-items-center position-absolute top-0 end-0 border-0 p-3" 
-		{isOpen}
-		on:close={() => (isOpen = false)}>
-			<ToastHeader icon="success">success</ToastHeader>
-			<ToastBody>
-				Product added to your cart.
-			</ToastBody>
-    </Toast>
-  </div>
+	<Route path="/" component={Products} />
 </main>
 
 <style>
