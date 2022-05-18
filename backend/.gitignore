@@ -1,6 +1,5 @@
 node_modules
 .snyk
-package-lock.json
 .env
 logs
 *.sqlite
