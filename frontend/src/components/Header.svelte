@@ -29,10 +29,9 @@
 		<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
 			<Nav class="ms-auto" navbar>
 				<NavItem>
-					<NavLink href="#components/">Components</NavLink>
-				</NavItem>
-				<NavItem>
-					<NavLink href="https://github.com/bestguy/sveltestrap">GitHub</NavLink>
+					<Link to="/cart" class="nav-link">
+						Cart
+					</Link>
 				</NavItem>
 			</Nav>
 		</Collapse>

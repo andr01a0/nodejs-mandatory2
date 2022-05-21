@@ -5,6 +5,10 @@ import Product from "./Product.svelte";
 
 <div class="flex-container">
 	<Product />
+	<Product />
+	<Product />
+	<Product />
+	<Product />
 </div>
 
 <style>

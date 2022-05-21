@@ -1,16 +1,21 @@
 <script>
-	import { Button, Toast, ToastBody, ToastHeader } from 'sveltestrap';
+	import { 
+		Toast, ToastBody, ToastHeader
+	} from 'sveltestrap';
 
 	let isOpen = false;
 </script>
 
-<Button color="primary"
-on:click={() => (isOpen = true)} disabled={isOpen}>
-Add to Cart
-</Button>
+<div id="container">
+	<button class="card-button"
+	on:click={() => (isOpen = true)} disabled={isOpen}>
+	Add to Cart
+</button>
+</div>
+
 <div>
 <Toast autohide delay=1000
-class="align-items-center position-absolute top-0 end-0 border-0 p-3" 
+class="align-items-center position-fixed top-0 end-0 border-0 p-3" 
 {isOpen}
 on:close={() => (isOpen = false)}>
 	<ToastHeader icon="success">success</ToastHeader>
@@ -19,3 +24,13 @@ on:close={() => (isOpen = false)}>
 	</ToastBody>
 </Toast>
 </div>
+
+<style>
+	#container {
+    background-image: url('../images/pcard.png');
+		background-repeat: no-repeat;
+    background-position: center;
+    width:400px;
+    height:484px;
+	}
+</style>

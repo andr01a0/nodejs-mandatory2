@@ -1,10 +1,12 @@
 <script>
 	import { Route } from "svelte-navigator";
 	import Products from "./Products.svelte";
+	import Cart from "./Cart.svelte";
 </script>
 
 <main>
 	<Route path="/" component={Products} />
+	<Route path="/cart" component={Cart} />
 </main>
 
 <style>
